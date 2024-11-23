@@ -31,7 +31,7 @@ class Meloman(loader.Module):
             loader.ConfigValue(
                 "sources",
                 [],
-                "Список ID чатів, звідки брати пісні (ID мають починатися з -100), добавляючи через «,»",
+                "Список ID чатів, звідки брати пісні (-100...)",
                 validator=loader.validators.Series(
                     validator=loader.validators.String()
                 ),
