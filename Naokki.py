@@ -5,14 +5,15 @@ from asyncio import sleep
 import os
 from .. import loader, utils
 from telethon.tl.functions.users import GetFullUserRequest
-import time 
+import time
 from telethon.tl.types import Message
 
 @loader.tds
 class NaokkiHelp(loader.Module):
     '''Модуль Naokki'''
     strings = {
-    "name":  "⼀🇱🇨⼂Naokki Ⲙⲟⲇυⳑⲉ ⼀🇱🇨?️⼂",
+    "name": 'Naokki'
+    #"name":  "⼀🇱🇨⼂Naokki Ⲙⲟⲇυⳑⲉ ⼀🇱🇨?️⼂",
     "loading": "<b>Ⳑⲟⲁⲇⲓⲛⲇ Naokki...</b>",
     "not_chat": "<b>⼀🇱🇨⼂ Ⲧы ⲡⲟⲕⲗⲟⲏяⲉⲱьⲥя Naokki ⼀🇱🇨⼂</b>",} # name loader () \n
 
@@ -133,7 +134,7 @@ class NaokkiHelp(loader.Module):
         sh = text[1:]
         sh = ' '.join(sh)
         reply = await message.get_reply_message()
-        shabl = [ 
+        shabl = [
         "члᴇнǿϻ ϻᴀть твǿю ᴇбᴀл) ⼂가 [🇱🇨]",
                 " стᴀль в пизду твǿᴇй ϻᴀϻᴀши всунул) ⼂가 [🇱🇨]",
                 " в рылǿ твǿю ϻᴀть ᴇбᴀл) ⼂가 [🇱🇨]",
