@@ -1,4 +1,5 @@
 from .. import loader, utils
+from telethon.tl.functions.messages import DeleteHistoryRequest
 
 class ClearAllMod(loader.Module):
     """Повністю очищає історію чату"""
