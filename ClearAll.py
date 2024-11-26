@@ -1,12 +1,12 @@
 from .. import loader, utils
 
 class ClearAllMod(loader.Module):
-    """Очищає всі повідомлення в чаті"""
+    """Повністю очищає історію чату"""
     strings = {'name': 'ClearAll'}
 
     @loader.sudo
     async def clearallcmd(self, message):
-        """Очищає всі повідомлення в чаті"""
+        """Очищає історію чату"""
         chat = message.chat
         if not chat:
             await message.edit("<b>Я не можу чистити лс!</b>")
@@ -22,9 +22,12 @@ class ClearAllMod(loader.Module):
             )
             return
 
-        total_deleted = 0
-        async for msg in message.client.iter_messages(chat, from_user="me"):
-            await msg.delete()
-            total_deleted += 1
-
-        await message.respond(f"<b>Видалено {total_deleted} повідомлень у чаті!</b>")
+        try:
+            await message.client(DeleteHistoryRequest(
+                peer=chat.id,
+                just_clear=False,
+                revoke=True
+            ))
+            await message.edit("<b>Історію чату видалено повністю!</b>")
+        except Exception as e:
+            await message.edit(f"<b>Помилка:</b> {str(e)}")
