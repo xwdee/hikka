@@ -5,7 +5,7 @@ class DelmeMod(loader.Module):
     strings = {'name': 'ClearAll'}
 
     @loader.sudo
-    async def delmecmd(self, message):
+    async def clearallcmd(self, message):
         """Удаляет все сообщения в группе"""
         chat = message.chat
         if chat:
