@@ -1,4 +1,4 @@
 Groq
 Meloman
 Naokki
-ClearAll
+ClearChat
