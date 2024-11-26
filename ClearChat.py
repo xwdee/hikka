@@ -6,12 +6,12 @@ class ClearAllMod(loader.Module):
 
     @loader.sudo
     async def clearallcmd(self, message):
-        """Удаляет все сообщения в группе (не только от тебя)"""
+        """Удаляет все сообщения в группе"""
         chat = message.chat
         if chat:
             args = utils.get_args_raw(message)
             if args != str(message.chat.id + message.sender_id):
-                await message.edit(f"<b>Если ты точно хочешь это сделать, то напиши:</b>\n<code>.clearall {message.chat.id + message.sender_id}</code>")
+                await message.edit(f"<b>Для продолжения, напиши следующее</b>\n<code>.clearall {message.chat.id + message.sender_id}</code>")
                 return
             await delete_all_messages(chat, message, True)
         else:
@@ -20,7 +20,7 @@ class ClearAllMod(loader.Module):
 async def delete_all_messages(chat, message, now):
     if now:
         all_messages = await message.client.get_messages(chat)
-        await message.edit(f"<b>Будет удалено {len(all_messages)} сообщений!</b>")
+        await message.edit(f"<b>Начался процес очистки....</b>")
     else:
         await message.delete()
 
