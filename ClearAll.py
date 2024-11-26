@@ -1,6 +1,6 @@
 from .. import loader, utils
 
-class DelmeMod(loader.Module):
+class ClearAllMod(loader.Module):
     """Удаляет все сообщения в группе"""
     strings = {'name': 'ClearAll'}
 
@@ -28,4 +28,4 @@ async def delete_all_messages(chat, message, now):
     async for msg in message.client.iter_messages(chat):
         if msg.sender_id != message.sender_id:
             await msg.delete()
-    await message.delete() if now else "хули мусара хули мусара хули, едем так как ехали даже в хуй не дули"
+    await message.delete()
