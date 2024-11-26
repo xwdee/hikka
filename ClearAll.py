@@ -1,34 +1,31 @@
 from .. import loader, utils
-from telethon.tl.functions.messages import DeleteHistoryRequest
 
-class ClearAllMod(loader.Module):
-    """Повністю очищає історію чату"""
+class DelmeMod(loader.Module):
+    """Удаляет все сообщения в группе"""
     strings = {'name': 'ClearAll'}
 
     @loader.sudo
-    async def clearallcmd(self, message):
-        """Очищає історію чату"""
+    async def delmecmd(self, message):
+        """Удаляет все сообщения в группе"""
         chat = message.chat
-        if not chat:
-            await message.edit("<b>Я не можу чистити лс!</b>")
-            return
+        if chat:
+            args = utils.get_args_raw(message)
+            if args != str(message.chat.id + message.sender_id):
+                await message.edit(f"<b>Если ты точно хочешь удалить все сообщения в группе, то напиши:</b>\n<code>.delme {message.chat.id + message.sender_id}</code>")
+                return
+            await delete_all_messages(chat, message, True)
+        else:
+            await message.edit("<b>В лс не чищу!</b>")
 
-        confirmation_code = str(chat.id + message.sender_id)
-        args = utils.get_args_raw(message)
+async def delete_all_messages(chat, message, now):
+    if now:
+        all_messages = await message.client.get_messages(chat)
+        all_message_count = len(all_messages)
+        await message.edit(f"<b>Будет удалено {all_message_count} сообщений!</b>")
+    else:
+        await message.delete()
 
-        if args != confirmation_code:
-            await message.edit(
-                f"<b>Якщо ти впевнений у своїх діях, введи:</b>\n"
-                f"<code>.clearall {confirmation_code}</code>"
-            )
-            return
-
-        try:
-            await message.client(DeleteHistoryRequest(
-                peer=chat.id,
-                just_clear=False,
-                revoke=True
-            ))
-            await message.edit("<b>Історію чату видалено повністю!</b>")
-        except Exception as e:
-            await message.edit(f"<b>Помилка:</b> {str(e)}")
+    async for msg in message.client.iter_messages(chat):
+        if msg.sender_id != message.sender_id:
+            await msg.delete()
+    await message.delete() if now else "хули мусара хули мусара хули, едем так как ехали даже в хуй не дули"
