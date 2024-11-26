@@ -27,5 +27,4 @@ class ClearAllMod(loader.Module):
             await msg.delete()
             total_deleted += 1
 
-        await message.client.delete_dialog(chat.id)
-        await message.respond(f"<b>Видалено {total_deleted} повідомлень і закрито чат!</b>")
+        await message.respond(f"<b>Видалено {total_deleted} повідомлень у чаті!</b>")
