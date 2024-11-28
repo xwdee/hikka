@@ -32,27 +32,27 @@ class StreamerMod(loader.Module):
             loader.ConfigValue(
                 "PROFILE", 
                 "veryfast", 
-                lambda: "FFmpeg профіль (за замовчуванням veryfast)"
+                lambda: "FFmpeg профіль"
             ),
             loader.ConfigValue(
                 "B:A", 
                 "192k", 
-                lambda: "Бітрейт аудіо (за замовчуванням 192k)"
+                lambda: "Бітрейт аудіо"
             ),
             loader.ConfigValue(
                 "B:V", 
                 "5M", 
-                lambda: "Бітрейт відео (за замовчуванням 5M)"
+                lambda: "Бітрейт відео"
             ),
             loader.ConfigValue(
                 "C:A", 
                 "aac", 
-                lambda: "Кодек аудіо (за замовчуванням aac)"
+                lambda: "Кодек аудіо"
             ),
             loader.ConfigValue(
                 "C:V", 
                 "libx264", 
-                lambda: "Кодек відео (за замовчуванням libx264)"
+                lambda: "Кодек відео"
             ),
         )
         self.stream_process = None
