@@ -2,3 +2,4 @@ Groq
 Meloman
 Naokki
 ClearChat
+RaidSSB
