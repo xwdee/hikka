@@ -2,4 +2,5 @@ Groq
 Meloman
 Naokki
 ClearChat
-RaidSSB
+RaidModule
+DelkrMod

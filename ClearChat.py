@@ -11,7 +11,7 @@ class ClearAllMod(loader.Module):
         if chat:
             args = utils.get_args_raw(message)
             if args != str(message.chat.id + message.sender_id):
-                await message.edit(f"<b>Для продолжения, напиши следующее</b>\n<code>.clearall {message.chat.id + message.sender_id}</code>")
+                await message.edit(f"<b>Для продолжения, напиши следующее</b>\n<code>clearall {message.chat.id + message.sender_id}</code>")
                 return
             await delete_all_messages(chat, message, True)
         else:
