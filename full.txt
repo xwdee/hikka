@@ -1,6 +1,6 @@
+ClearChat
 Groq
 Meloman
 Naokki
-ClearChat
 RaidSSB
 Reporter
