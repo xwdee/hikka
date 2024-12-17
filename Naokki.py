@@ -12,8 +12,8 @@ from telethon.tl.types import Message
 class NaokkiHelp(loader.Module):
     '''Модуль Naokki'''
     strings = {
-    "name": 'Naokki', # For loadding from repo
-    #"name":  "⼀🇱🇨⼂Naokki Ⲙⲟⲇυⳑⲉ ⼀🇱🇨?️⼂",
+    #"name": 'Naokki', # For loadding from repo
+    "name":  "⼀🇱🇨⼂Naokki Ⲙⲟⲇυⳑⲉ ⼀🇱🇨?️⼂",
     "loading": "<b>Ⳑⲟⲁⲇⲓⲛⲇ Naokki...</b>",
     "not_chat": "<b>⼀🇱🇨⼂ Ⲧы ⲡⲟⲕⲗⲟⲏяⲉⲱьⲥя Naokki ⼀🇱🇨⼂</b>",} # name loader () \n
 
