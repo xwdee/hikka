@@ -8,7 +8,7 @@ from telethon.tl.types import Message
 
 @loader.tds
 class SSBRaidModule(loader.Module):
-    '''рейд модуль для Рейдерів (логічно <emoji document_id=5460704463327074557>😁</emoji>)'''
+    '''рейд модуль для Рейдерів (логічно 😁)'''
     strings = {"name":  "RaidSSB"}
 
 
