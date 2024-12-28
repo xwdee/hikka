@@ -29,7 +29,7 @@
 #                                                                                                                             
 # Name: MusicFinder
 # Forker: Xunta
-# Commands: lybot
+# Commands: mfind
 # ---------------------------------------------------------------------------------
 # meta banner:
 # meta developer: @tgXunta
@@ -76,7 +76,7 @@ class MusicFinderMod(loader.Module):
         "_cls_doc": "Простий модуль по пошуку пісень",
     }
 
-    async def lybotcmd(self, message: Message):
+    async def mfindcmd(self, message: Message):
         """<request> - Send music with @LyBot"""
         args = utils.get_args_raw(message)
         if not args:
