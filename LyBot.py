@@ -76,7 +76,7 @@ class MusicFinder(loader.Module):
         "_cls_doc": "Простий модуль по пошуку пісень",
     }
 
-    async def mfind(self, message: Message):
+    async def mfindcmd(self, message: Message):
         """<request> - Send music with @LyBot"""
         args = utils.get_args_raw(message)
         if not args:
