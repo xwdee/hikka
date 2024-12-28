@@ -33,7 +33,7 @@
 # ---------------------------------------------------------------------------------
 # meta banner:
 # meta developer: @tgXunta
-__version__ = (1,0,1)
+__version__ = (1,1,0)
 
 from telethon.tl.types import Message
 
@@ -63,17 +63,6 @@ class MusicFinder(loader.Module):
         ),
         "_cmd_doc_aniq": "<запрос> - Поиск песен через @LyBot",
         "_cls_doc": "Простенький модуль по поиску песен",
-    }
-
-    strings_uk = {
-        "no_text": (
-            "<emoji document_id=5312526098750252863>🚫</emoji> <b>Вкажіть назву для пошуку музики</b>"
-        ),
-        "processing": (
-            "<emoji document_id=5451646226975955576>⌛️</emoji> <b>Обробка...</b>"
-        ),
-        "_cmd_doc_aniq": "<запит> - Пошук пісні через @LyBot",
-        "_cls_doc": "Простий модуль по пошуку пісень",
     }
 
     async def mfindcmd(self, message: Message):
