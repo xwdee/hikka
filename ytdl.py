@@ -14,7 +14,7 @@
 # ---------------------------------------------------------------------------------
 # meta banner:
 # meta developer: @tgXunta
-__version__ = (1,0,0)
+__version__ = (1,1,0)
 
 import os
 
@@ -36,31 +36,31 @@ from .. import loader, utils
 
 @loader.tds
 class YtDlMod(loader.Module):
-    """Youtube-Dl Module"""
+    """YtDl Module"""
 
     strings = {
-        "name": "Youtube-Dl",
-        "preparing": "<b>[YouTube-Dl]</b> Preparing...",
-        "downloading": "<b>[YouTube-Dl]</b> Downloading...",
-        "working": "<b>[YouTube-Dl]</b> Working...",
-        "exporting": "<b>[YouTube-Dl]</b> Exporting...",
-        "reply": "<b>[YouTube-Dl]</b> No link!",
-        "noargs": "<b>[YouTube-Dl]</b> No args!",
-        "content_too_short": "<b>[YouTube-Dl]</b> Downloading content too short!",
+        "name": "YtDl",
+        "preparing": "<b>[YtDl]</b> Preparing...",
+        "downloading": "<b>[YtDl]</b> Downloading...",
+        "working": "<b>[YtDl]</b> Working...",
+        "exporting": "<b>[YtDl]</b> Exporting...",
+        "reply": "<b>[YtDl]</b> No link!",
+        "noargs": "<b>[YtDl]</b> No args!",
+        "content_too_short": "<b>[YtDl]</b> Downloading content too short!",
         "geoban": (
-            "<b>[YouTube-Dl]</b> The video is not available "
+            "<b>[YtDl]</b> The video is not available "
             "for your geographical location due to geographical "
             "restrictions set by the website!"
         ),
-        "maxdlserr": '<b>[YouTube-Dl]</b> The download limit is as follows: " oh ahah"',
-        "pperr": "<b>[YouTube-Dl]</b> Error in post-processing!",
+        "maxdlserr": '<b>[YtDl]</b> The download limit is as follows: " oh ahah"',
+        "pperr": "<b>[YtDl]</b> Error in post-processing!",
         "noformat": (
-            "<b>[YouTube-Dl]</b> Media is not available in the requested format"
+            "<b>[YtDl]</b> Media is not available in the requested format"
         ),
-        "xameerr": "<b>[YouTube-Dl]</b> {0.code}: {0.msg}\n{0.reason}",
-        "exporterr": "<b>[YouTube-Dl]</b> Error when exporting video",
-        "err": "<b>[YouTube-Dl]</b> {}",
-        "err2": "<b>[YouTube-Dl]</b> {}: {}",
+        "xameerr": "<b>[YtDl]</b> {0.code}: {0.msg}\n{0.reason}",
+        "exporterr": "<b>[YtDl]</b> Error when exporting video",
+        "err": "<b>[YtDl]</b> {}",
+        "err2": "<b>[YtDl]</b> {}: {}",
     }
 
     async def ripvcmd(self, m):
