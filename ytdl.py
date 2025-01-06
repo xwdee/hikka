@@ -14,8 +14,7 @@
 # ---------------------------------------------------------------------------------
 # meta banner:
 # meta developer: @tgXunta
-__version__ = (1,1,0)
-
+__version__ = (1,2,1)
 import os
 
 from telethon.tl.types import DocumentAttributeAudio
@@ -31,12 +30,12 @@ from yt_dlp.utils import (
     XAttrMetadataError,
 )
 
-from .. import loader, utils
+from .. import loader, utils  # type: ignore
 
 
 @loader.tds
 class YtDlMod(loader.Module):
-    """YtDl Module"""
+    """YouTube Downloader Module"""
 
     strings = {
         "name": "YtDl",
@@ -64,11 +63,11 @@ class YtDlMod(loader.Module):
     }
 
     async def ripvcmd(self, m):
-        """<link / reply_to_link> - download video"""
+        """.ripv <link / reply_to_link> - download video"""
         await self.riper(m, "video")
 
     async def ripacmd(self, m):
-        """<link / reply_to_link> - download audio"""
+        """.ripa <link / reply_to_link> - download audio"""
         await self.riper(m, "audio")
 
     async def riper(self, m, type):
@@ -94,7 +93,7 @@ class YtDlMod(loader.Module):
                         "preferredquality": "320",
                     }
                 ],
-                "outtmpl": "%(id)s.mp3",
+                "outtmpl": "%(id)s",
                 "quiet": True,
                 "logtostderr": False,
             }
@@ -155,7 +154,7 @@ class YtDlMod(loader.Module):
                     )
                 ],
             )
-            os.remove(f"{rip_data['id']}.mp3")
+            os.remove(f"{rip_data['id']}")
         elif video:
             await utils.answer(
                 m,
