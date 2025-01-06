@@ -14,7 +14,7 @@
 # ---------------------------------------------------------------------------------
 # meta banner:
 # meta developer: @tgXunta
-__version__ = (1,2,1)
+__version__ = (1,2,2)
 import os
 
 from telethon.tl.types import DocumentAttributeAudio
@@ -63,11 +63,11 @@ class YtDlMod(loader.Module):
     }
 
     async def ripvcmd(self, m):
-        """.ripv <link / reply_to_link> - download video"""
+        """<link/reply-link> - download video"""
         await self.riper(m, "video")
 
     async def ripacmd(self, m):
-        """.ripa <link / reply_to_link> - download audio"""
+        """<link/reply-link> - download audio"""
         await self.riper(m, "audio")
 
     async def riper(self, m, type):
