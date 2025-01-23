@@ -20,6 +20,8 @@ from telethon.tl.types import Message
 
 from .. import loader, utils
 
+def register(cb):
+    cb(MusicFinder())
 
 @loader.tds
 class MusicFinder(loader.Module):
@@ -48,7 +50,7 @@ class MusicFinder(loader.Module):
     }
 
     async def mfindcmd(self, message: Message):
-        """<request> - Send music with @LyBot"""
+        """<request> - Find music with @LyBot"""
         args = utils.get_args_raw(message)
         if not args:
             await utils.answer(message, self.strings("no_text"))

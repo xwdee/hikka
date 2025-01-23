@@ -17,16 +17,16 @@ class ClearAllMod(loader.Module):
         else:
             await message.edit("<b>В лс не чищу!</b>")
 
-async def delete_all_messages(chat, message, now):
-    if now:
-        all_messages = await message.client.get_messages(chat)
-        await message.edit(f"<b>Начался процес очистки....</b>")
-    else:
-        await message.delete()
+    async def delete_all_messages(chat, message, now):
+        if now:
+            all_messages = await message.client.get_messages(chat)
+            await message.edit(f"<b>Начался процес очистки....</b>")
+        else:
+            await message.delete()
 
-    async for msg in message.client.iter_messages(chat):
-        try:
-            await msg.delete()
-        except Exception as e:
-            print(f"Ошибка при удалении сообщения: {e}")
-    await message.delete() if now else None
+        async for msg in message.client.iter_messages(chat):
+            try:
+                await msg.delete()
+            except Exception as e:
+                print(f"Ошибка при удалении сообщения: {e}")
+        await message.delete() if now else None
