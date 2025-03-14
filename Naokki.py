@@ -5,7 +5,7 @@ from asyncio import sleep
 import os
 from .. import loader, utils
 from telethon.tl.functions.users import GetFullUserRequest
-import time 
+import time
 from telethon.tl.types import Message
 
 @loader.tds
@@ -20,7 +20,7 @@ class NaokkiHelp(loader.Module):
     async def client_ready(self, client, db) -> None:
         self.db = db
         self.client = client
-       
+
     async def naokkihelpcmd(self, message):
         """❨🇱🇨 Ⲋⲧⲁʀⲧ Ⲁⲛⲓⲙⲁⲧⲓⲟⲛ Ⲏⲉⳑⲣ 🇱🇨❩"""
         args = utils.get_args_raw(message)
@@ -56,7 +56,7 @@ class NaokkiHelp(loader.Module):
         time.sleep(0.1)
         args = utils.get_args_raw(message)
         reply = await message.get_reply_message()
-        
+
         message = await utils.answer(message, self.strings("loading"))
 
         try:
@@ -1494,7 +1494,7 @@ class NaokkiHelp(loader.Module):
         while self.db.get(self.strings["name"], "state"):
             await message.respond(sh+(random.choice(shabl)))
             await sleep(time)
-            
+
     async def nkkiphcmd(self, message):
         '''❨🇱🇨 Ⲋⲧⲁʀⲧ NIⲢⳒⲢⲏⲟⲧⲟ ⲙⲟⲇυⳑⲉ 🇱🇨❩'''
         args = utils.get_args_raw(message)
@@ -2219,7 +2219,7 @@ class NaokkiHelp(loader.Module):
         while self.db.get(self.strings["name"], "state"):
             await message.respond(sh+(random.choice(shablon)), file=media)
             await sleep(time)
-            
+
     async def nkkiebawcmd(self, message):
         """❨🇱🇨 Ⲋⲧⲁʀⲧ NaokkiⲈⳝⲁⲱ ⲙⲟⲇυⳑⲉ 🇱🇨❩"""
         args = utils.get_args_raw(message)
@@ -2528,9 +2528,7 @@ class NaokkiHelp(loader.Module):
         while self.db.get(self.strings["name"], "state"):
             await message.respond(sh+(random.choice(shabl3)))
             await sleep(time)
-            
-            
-            
+
     async def nkkiebetcmd(self, message):
         """❨🏴 Ⲋⲧⲁʀⲧ NaokkiⲈⳝⲉⲧ ⲙⲟⲇυⳑⲉ 🏴❩"""
         args = utils.get_args_raw(message)
@@ -3171,8 +3169,7 @@ class NaokkiHelp(loader.Module):
         while self.db.get(self.strings["name"], "state"):
             await message.respond(sh+(random.choice(shabl4)))
             await sleep(time)
-            
-            
+
     async def naokkkicmd(self, message):
         """❨🌑 Ⲋⲧⲁʀⲧ Naokki ⲙⲟⲇυⳑⲉ 🌑❩"""
         args = utils.get_args(message)

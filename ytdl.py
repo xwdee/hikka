@@ -1,22 +1,8 @@
-# ---------------------------------------------------------------------------------
-#
-# ░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░       ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░▒▓████████▓▒░▒▓██████▓▒░  
-# ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░ 
-# ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░ 
-# ░▒▓███████▓▒░░▒▓███████▓▒░░▒▓███████▓▒░░▒▓█▓▒░░▒▓█▓▒░       ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓████████▓▒░ 
-# ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░ 
-# ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░ 
-# ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░ 
-#                                                                                                                             
-# Name: YouTube DownLoader
-# Forker: Xunta
-# Commands: ripv ripa
-# ---------------------------------------------------------------------------------
+import os
+__version__ = (1,2,2)
 # meta banner:
 # meta developer: @tgXunta
-__version__ = (1,2,2)
-import os
-
+from .. import loader, utils  # type: ignore
 from telethon.tl.types import DocumentAttributeAudio
 from yt_dlp import YoutubeDL
 from yt_dlp.utils import (
@@ -30,7 +16,6 @@ from yt_dlp.utils import (
     XAttrMetadataError,
 )
 
-from .. import loader, utils  # type: ignore
 
 
 @loader.tds
@@ -62,6 +47,32 @@ class YtDlMod(loader.Module):
         "err2": "<b>[YtDl]</b> {}: {}",
     }
 
+    strings_ru = {
+        "name": "YtDl",
+        "preparing": "<b>[YtDl]</b> Обробка...",
+        "downloading": "<b>[YtDl]</b> Завантаження...",
+        "working": "<b>[YtDl]</b> Працюємо...",
+        "exporting": "<b>[YtDl]</b> Екпорт...",
+        "reply": "<b>[YtDl]</b> Нема посилання!",
+        "noargs": "<b>[YtDl]</b> Нема аргументів!",
+        "content_too_short": "<b>[YtDl]</b> Закороткий контент!",
+        "geoban": (
+            "<b>[YtDl]</b> Відео недоступне "
+            "по регіону "
+        ),
+        "maxdlserr": (
+            '<b>[YtDl]</b> їбав я це переводить '
+            '<tg-spoiler>The download limit is as follows: " oh ahah"</tg-spoiler>'
+        "pperr": "<b>[YtDl]</b> Помилка в постобробці!",
+        "noformat": (
+            "<b>[YtDl]</b> Медіа не доступно в поточному форматі"
+        ),
+        "xameerr": "<b>[YtDl]</b> {0.code}: {0.msg}\n{0.reason}",
+        "exporterr": "<b>[YtDl]</b> Помилка експорту",
+        "err": "<b>[YtDl]</b> {}",
+        "err2": "<b>[YtDl]</b> {}: {}",
+    }
+
     async def ripvcmd(self, m):
         """<link/reply-link> - download video"""
         await self.riper(m, "video")
@@ -79,6 +90,8 @@ class YtDlMod(loader.Module):
         m = await utils.answer(m, self.strings("preparing", m))
         if type == "audio":
             opts = {
+                "cookies": "cookies.json",
+                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                 "format": "bestaudio",
                 "addmetadata": True,
                 "key": "FFmpegMetadata",
@@ -101,6 +114,8 @@ class YtDlMod(loader.Module):
             song = True
         elif type == "video":
             opts = {
+                "cookies": "cookies.json",
+                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                 "format": "bestvideo+bestaudio/best",
                 "addmetadata": True,
                 "key": "FFmpegMetadata",
