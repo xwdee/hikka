@@ -1,12 +1,12 @@
 from .. import loader, utils
 
-class DelmeMod(loader.Module):
+class ClearChatMod(loader.Module):
     """Видаляє всі повідомлення в чаті"""
 
     strings = {"name": "ClearChat"}
 
     @loader.sudo
-    async def delchatcmd(self, message):
+    async def delallcmd(self, message):
         """Видаляє всі повідомлення в чаті"""
         chat = message.chat
         if chat:
