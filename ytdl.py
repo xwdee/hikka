@@ -63,6 +63,7 @@ class YtDlMod(loader.Module):
         "maxdlserr": (
             '<b>[YtDl]</b> їбав я це переводить '
             '<tg-spoiler>The download limit is as follows: " oh ahah"</tg-spoiler>'
+        ),
         "pperr": "<b>[YtDl]</b> Помилка в постобробці!",
         "noformat": (
             "<b>[YtDl]</b> Медіа не доступно в поточному форматі"
@@ -147,7 +148,7 @@ class YtDlMod(loader.Module):
         except UnavailableVideoError:
             return await utils.answer(m, self.strings("noformat", m))
         except XAttrMetadataError as XAME:
-            return await utils.answer(m, self.strings("xameerr", m).format(XAME))
+            return await utils.answer(m, self.strings("xameerr", m).format(str(XAME)))
         except ExtractorError:
             return await utils.answer(m, self.strings("exporterr", m))
         except Exception as e:
@@ -169,7 +170,7 @@ class YtDlMod(loader.Module):
                     )
                 ],
             )
-            os.remove(f"{rip_data['id']}")
+            os.remove(f"{rip_data['id']}.{rip_data['ext']}")
         elif video:
             await utils.answer(
                 m,
