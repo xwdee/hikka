@@ -1,8 +1,9 @@
-__version__ = (1, 2, 3)
+__version__ = (1, 2, 4)
 # meta developer: @tgXunta
 import contextlib
 from telethon.tl.types import Message
 import requests
+import mistune
 import logging
 import re
 
@@ -209,13 +210,8 @@ class Groq(loader.Module):
         )
         return resp.json()
 
-    def _process_code_tags(self, text: str) -> str:
-        return re.sub(
-            r"`(.*?)`",
-            r"<code>\1</code>",
-            re.sub(r"```(.*?)```", r"<code>\1</code>", text, flags=re.DOTALL),
-            flags=re.DOTALL,
-        )
+    def _process_markdown(self, text: str) -> str:
+        return mistune.markdown(text)
 
     async def _get_chat_completion(self, prompt: str) -> str:
         resp = await self._make_request(
@@ -275,7 +271,7 @@ class Groq(loader.Module):
                 [
                     self.strings("question").format(question=prompt),
                     self.strings("answer").format(
-                        answer=self._process_code_tags(answer)
+                        answer=self._process_markdown(answer)
                     ),
                 ]
             ),
