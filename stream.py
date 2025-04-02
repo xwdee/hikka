@@ -19,39 +19,39 @@ class StreamerMod(loader.Module):
     def __init__(self):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
-                "TG_KEY", 
-                None, 
+                "TG_KEY",
+                None,
                 lambda: "Ключ RTMPS",
                 validator=loader.validators.Hidden()
             ),
             loader.ConfigValue(
-                "TG_URL", 
-                'rtmps://dc4-1.rtmp.t.me/s/', 
+                "TG_URL",
+                'rtmps://dc4-1.rtmp.t.me/s/',
                 lambda: "Посилання на RTMPS"
             ),
             loader.ConfigValue(
-                "PROFILE", 
-                "veryfast", 
+                "PROFILE",
+                "veryfast",
                 lambda: "FFmpeg профіль"
             ),
             loader.ConfigValue(
-                "B:A", 
-                "192k", 
+                "B:A",
+                "192k",
                 lambda: "Бітрейт аудіо"
             ),
             loader.ConfigValue(
-                "B:V", 
-                "5M", 
+                "B:V",
+                "5M",
                 lambda: "Бітрейт відео"
             ),
             loader.ConfigValue(
-                "C:A", 
-                "aac", 
+                "C:A",
+                "aac",
                 lambda: "Кодек аудіо"
             ),
             loader.ConfigValue(
-                "C:V", 
-                "libx264", 
+                "C:V",
+                "libx264",
                 lambda: "Кодек відео"
             ),
         )
@@ -60,21 +60,18 @@ class StreamerMod(loader.Module):
     async def _start_stream(self, input_file: str, message: Message):
         """Запускає трансляцію через FFmpeg"""
         try:
-            cmd = (
-                ffmpeg
-                .input(input_file)
-                .output(
-                    self.config["TG_URL"],
-                    vcodec=self.config["C:V"],
-                    acodec=self.config["C:A"],
-                    b_v=self.config["B:V"],
-                    b_a=self.config["B:A"],
-                    preset=self.config["PROFILE"],
-                    format="flv"
-                )
-                .global_args('-re')
-                .compile()
-            )
+            stream_url = self.config["TG_URL"] + self.config["TG_KEY"]
+            cmd = [
+                "ffmpeg", "-re", "-i", input_file,
+                "-c:v", self.config["C:V"],
+                "-b:v", self.config["B:V"],
+                "-c:a", self.config["C:A"],
+                "-b:a", self.config["B:A"],
+                "-preset", self.config["PROFILE"],
+                "-f", "flv",
+                stream_url
+            ]
+            print("Running FFmpeg command:", ' '.join(cmd))
             self.stream_process = await asyncio.create_subprocess_exec(*cmd)
             await message.respond(self.strings["start_stream"])
         except Exception as e:
